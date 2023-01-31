@@ -12,6 +12,11 @@ class ModelCustomer extends BaseModel
     public function getCustomer($id){
         return $this->db->getRow("SELECT * FROM customers WHERE customer_id=?",[$id]);
     }
+    public function getCustomerProjects($id){
+        return $this->db->getRows("SELECT projects.id as id,projects.title as title,projects.status as `status`,progress FROM projects 
+        LEFT JOIN customers ON  projects.customer_id=customers.customer_id 
+        WHERE customers.customer_id=?",[$id]);
+    }
 
     public function addCustomer($post){
 
@@ -63,6 +68,20 @@ class ModelCustomer extends BaseModel
             "customer_phone" => $post["customer_phone"],
             "customer_gsm" => $post["customer_gsm"],
             "customer_email" => $post["customer_email"],
+            "customer_id" => $post["customer_id"]
+        ));
+
+        return $result;
+   
+    }
+    public function updateCustomerNote($post){
+
+        $result = $this->db->update("UPDATE customers  SET
+            customer_note=:customer_note
+
+            WHERE customer_id = :customer_id
+        ",array(
+            "customer_note" => $post["note"],
             "customer_id" => $post["customer_id"]
         ));
 

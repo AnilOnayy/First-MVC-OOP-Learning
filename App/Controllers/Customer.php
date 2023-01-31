@@ -25,8 +25,10 @@ class Customer extends BaseController
 
         $ModelCustomer = new ModelCustomer();
         $customer = $ModelCustomer->getCustomer($id);
+        $projects = $ModelCustomer->getCustomerProjects($id);
 
         $data['customer'] = $customer;
+        $data['projects'] = $projects;
 
 
         echo $this->view->load("customer/detail",$data);
@@ -97,6 +99,31 @@ class Customer extends BaseController
 
         if($result){
             echo $this->request->response("success","İşlem Başarılı","Müşteri bilgileri başarıyla güncellendi",["redirect"=>requestLink('customer')]);
+            exit();
+        }
+        else{
+            echo $this->request->response("error","Ops! Dikkat","Beklenmedik bir hata meydana geldi. Lütfen sayfayı yenileyip tekrar deneyin.");
+            exit();
+        }
+
+    }
+
+    // Customer Update PUT Request
+    public function updateNote(){
+        $post = $this->request->post();
+
+        if(!isset($post["customer_id"])){
+            echo $this->request->response("error","Ops! Dikkat","Kullanıcı adı olmadan kullanıcı güncelleyemezsin!");
+            exit();
+        }
+
+
+        $ModelCustomer = new ModelCustomer();
+        $result = $ModelCustomer->updateCustomerNote($post);
+
+
+        if($result){
+            echo $this->request->response("success","İşlem Başarılı","Müşteri bilgileri başarıyla güncellendi");
             exit();
         }
         else{
