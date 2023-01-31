@@ -24,11 +24,11 @@ $cms->router->mount('/customer', function() use ($cms) {
 
     $cms->router->get('/', 'App\Controllers\Customer@index');
     $cms->router->get('/add', 'App\Controllers\Customer@add');
-    $cms->router->post('/add', 'App\Controllers\Customer@createCustomer');
     $cms->router->get('/([0-9+])', 'App\Controllers\Customer@detail');
     $cms->router->get('/update/([0-9]+)', 'App\Controllers\Customer@update');
 
     // Bunları API Altına taşımak daha sağlıklı.
+    $cms->router->post('/add', 'App\Controllers\Customer@createCustomer');
     $cms->router->post('/update', 'App\Controllers\Customer@updateCustomer');
     $cms->router->post('/delete', 'App\Controllers\Customer@delete');
 

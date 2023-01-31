@@ -65,8 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>Müşteriler</th>
-                                        <th>Projeleri</th>
+                                        <th>Ad Soyad</th>
                                         <th style="width: 40px">Eylem</th>
                                     </tr>
                                 </thead>
@@ -79,18 +78,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <td><?=$customer->customer_id?></td>
                                         <td><?=$customer->customer_name ." ".$customer->customer_surname?></td>
                                         <td>
-                                            Mobil Uygulama
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%">
-                                                </div>
-                                            </div>
-                                            <br>
-
-                                        </td>
-                                        <td>
                                             <div class="btn-group btn-group-md">
-                                                <button onclick="removeCustomer(<?=$customer->customer_id?>)" class="btn btn-sm btn-danger">Sil</button>
-                                                <a href="<?=requestLink('customer/update/'.$customer->customer_id)?>" class="btn btn-sm btn-info">Güncelle</a>
+
+                                                <button onclick="removeCustomer(<?=$customer->customer_id?>)" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                <a href="<?=requestLink('customer/update/'.$customer->customer_id)?>" class="btn btn-sm btn-warning"> <i class="fa fa-recycle" aria-hidden="true"></i>
+</a>
+                                                <a href="<?=requestLink('customer/'.$customer->customer_id)?>" class="btn btn-sm btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                     </tr>

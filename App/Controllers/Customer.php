@@ -18,10 +18,18 @@ class Customer extends BaseController
         echo $this->view->load("customer/index",$data);
     }
 
-    public function detail(){
+    public function detail($id){
+
         $data['navbar'] = $this->view->load("static/navbar");
         $data['sidebar'] = $this->view->load("static/sidebar");
-        echo $this->view->load("customer/index",$data);
+
+        $ModelCustomer = new ModelCustomer();
+        $customer = $ModelCustomer->getCustomer($id);
+
+        $data['customer'] = $customer;
+
+
+        echo $this->view->load("customer/detail",$data);
     }
 
     public function add(){
