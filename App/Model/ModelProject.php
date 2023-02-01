@@ -7,7 +7,9 @@ use Core\BaseModel;
 class ModelProject extends BaseModel
 {
     public function getAllProjects(){
-        return $this->db->getRows("SELECT * FROM projects ");
+        return $this->db->getRows("SELECT * FROM projects  
+        LEFT JOIN customers ON customers.customer_id = projects.customer_id
+        ");
     }
     public function getProject($id){
         return $this->db->getRow("SELECT * FROM projects WHERE id=?",[$id]);

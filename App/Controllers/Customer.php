@@ -116,6 +116,10 @@ class Customer extends BaseController
             echo $this->request->response("error","Ops! Dikkat","Kullanıcı adı olmadan kullanıcı güncelleyemezsin!");
             exit();
         }
+        if($post["note"]==""){
+            echo $this->request->response("error","Ops! Dikkat","Boş not gönderemezsin!");
+            exit();
+        }
 
 
         $ModelCustomer = new ModelCustomer();

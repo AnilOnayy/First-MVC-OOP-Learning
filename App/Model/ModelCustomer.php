@@ -76,6 +76,8 @@ class ModelCustomer extends BaseModel
     }
     public function updateCustomerNote($post){
 
+    
+
         $result = $this->db->update("UPDATE customers  SET
             customer_note=:customer_note
 

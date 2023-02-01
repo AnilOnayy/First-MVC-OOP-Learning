@@ -16,7 +16,7 @@
           <img src="http://localhost/patika-cms/public/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?=sess("name")." ".sess("surname")?></a>
+          <a href="<?=requestLink("user")?>" class="d-block"><?=sess("name")." ".sess("surname")?></a>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?=requestLink()?>" class="nav-link">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>Keşfet</p>
             </a>

@@ -37,6 +37,17 @@ $cms->router->mount('/customer', function() use ($cms) {
 
 
 
+// user
+$cms->router->mount('/user', function() use ($cms) {
+
+    $cms->router->get('/', 'App\Controllers\User@index');
+    $cms->router->post('/edit', 'App\Controllers\User@editProfile');
+    $cms->router->post('/change-password', 'App\Controllers\User@changePassword');
+  
+
+});
+
+// Projects
 $cms->router->mount('/project', function() use ($cms) {
 
     $cms->router->get('/', 'App\Controllers\Project@index');

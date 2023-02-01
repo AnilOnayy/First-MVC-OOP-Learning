@@ -62,7 +62,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th >Proje</th>
+                                        <th>Proje</th>
+                                        <th>Müşteri</th>
                                         <th>Durum</th>
                                         <th>İlerleyiş</th>
                                         <th style="width: 40px">Eylem</th>
@@ -75,6 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <tr id="<?=$project->id?>">
                                         <td><?=$project->title?></td>
+                                        <td><a href="<?=requestLink("customer/".$project->customer_id)?>"><?=$project->customer_name." ".$project->customer_surname?></a></td>
                                         <td><?=$project->status=="a" ? "Aktif" : "Pasif"?></td>
                                       
                                         <td>
@@ -98,7 +100,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <?php } ?>
 
-                        </div>
 
 
                         </tr>
